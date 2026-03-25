@@ -23,6 +23,31 @@ date: 25 March 2023
 bibliography: paper.bib
 ---
 
+<!--
+
+NEW JOSS REQUIREMENTS
+
+Length
+
+* longer paper acceptable (but not necessarily encouraged...)
+*  750-1750
+
+Sections
+
+https://joss.readthedocs.io/en/latest/paper.html#:~:text=Your%20paper%20must-,include,-the%20following%20required
+
+* Summary
+* Statement of need
+* State of the field
+* Software design
+* Research impact statement
+* AI usage disclosure
+
+-->
+
+
+[@mennis2006IntelligentDasymetric;@molinski2022PyinterpolateSpatial;@goodchild1980areal;@Eicher2001dasy]
+
 # Summary
 
 
@@ -30,7 +55,7 @@ bibliography: paper.bib
 
 Areal interpolation is a foundational problem in spatial analysis, arising whenever data collected over one set of polygons (source zones) must be reallocated to another (target zones) with different spatial configurations. `tobler` implements a suite of methods for this task, ranging from simple area-weighted interpolation to more advanced dasymetric and model-based approaches. The package is designed to operate natively on GeoPandas GeoDataFrames, enabling seamless integration into modern Python-based geospatial workflows.
 
-As part of the PySAL (Python Spatial Analysis Library) ecosystem, `tobler` adheres to shared design principles emphasizing composability, transparency, and reproducibility. It fills a critical gap in the Python geospatial stack by providing robust, well-tested implementations of areal interpolation methods that are both accessible for applied users and extensible for methodological research.
+As part of the PySAL (Python Spatial Analysis Library [@pysal2007;rey2022pysalecosystem]) ecosystem, `tobler` adheres to shared design principles emphasizing composability, transparency, and reproducibility. It fills a critical gap in the Python geospatial stack by providing robust, well-tested implementations of areal interpolation methods that are both accessible for applied users and extensible for methodological research.
 
 # Statement of need
 
@@ -120,14 +145,34 @@ The API design emphasizes clarity and consistency, with function signatures that
 
 Additionally, `tobler` is developed with testing and documentation standards consistent with the Scientific Python ecosystem, ensuring reliability and maintainability.
 
+
+# Statement of need
+
+...
+
+# State of the field
+
+...
+
+# Software design
+
+...
+
+# Research impact statement
+
+...
+
+# AI usage disclosure
+
+...
+
 # Acknowledgements
 
 `tobler` is developed as part of the PySAL community, which brings together researchers and developers working on spatial analysis methods and software. The project builds on decades of research in areal interpolation, dasymetric mapping, and spatial data science, and benefits from contributions across the open-source geospatial community.
 
+The following acknowledgement applies to James D. Gaboardi:
+
+> This manuscript has been authored in part by UT-Battelle LLC under contract DE-AC05-00OR22725 with the US Department of Energy (DOE). The US government retains and the publisher, by accepting the article for publication, acknowledges that the US government retains a nonexclusive, paid-up, irrevocable worldwide license to publish or reproduce the published form of this manuscript, or allow others to do so, for US government purposes. DOE will provide public access to these results of federally sponsored research in accordance with the DOE Public Access Plan (http://energy.gov/downloads/doe-public-access-plan).
+
 # References
 
-Goodchild, M. F., & Lam, N. S.-N. (1980). Areal interpolation: A variant of the traditional spatial problem. *Geo-Processing*, 1, 297–312.
-
-Eicher, C. L., & Brewer, C. A. (2001). Dasymetric mapping and areal interpolation: Implementation and evaluation. *Cartography and Geographic Information Science*, 28(2), 125–138.
-
-Rey, S. J., & Anselin, L. (2007). PySAL: A Python library of spatial analytical methods. *The Review of Regional Studies*, 37(1), 5–27.
