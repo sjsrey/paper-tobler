@@ -1,26 +1,33 @@
 ---
 title: 'tobler: Spatial interpolation and areal analysis for Python'
 tags:
-  - Python
-  - geographic information science
-  - interpolation
-  - spatial analysis
+- Python
+- geographic information science
+- interpolation
+- spatial analysis
+date: "25 March 2023"
+output: pdf_document
 authors:
-  - name: Elijah Knaap
-    orcid: 0000-0001-7520-2238
-    equal-contrib: true
-    affiliation: 1
+- name: Elijah Knaap
+  orcid: "0000-0001-7520-2238"
+  equal-contrib: true
+  affiliation: 1
 - name: Sergio J. Rey
-    orcid: 0000-0001-5857-9762
-    equal-contrib: true
-    affiliation: 2
-affiliations:
- - name: University of California, Irvine
-   index: 1
- - name: San Diego State University
-   index: 2
-date: 25 March 2023
+  orcid: "0000-0001-5857-9762"
+  equal-contrib: true
+  affiliation: 2
+- name: Renan X. Cortes
+  orcid: "0000-0002-1889-5282"
+  equal-contrib: true
+  affiliation: 3
 bibliography: paper.bib
+affiliations:
+- name: University of California, Irvine
+  index: 1
+- name: San Diego State University
+  index: 2
+- name: Federal University of Rio Grande do Sul
+  index: 3
 ---
 
 <!--
