@@ -122,7 +122,25 @@ result = area_interpolate(
 )
 ```
 
-This operation transfers population counts and income measures from the source geometries to the target geometries, handling each variable type appropriately.
+This operation transfers population counts and income measures from the source geometries to the target geometries, handling each variable type appropriately. 
+
+Alternatively, the Dasymetric interpolation in `tobler` can be implemented as follows:
+
+```python
+from tobler.dasymetric import masked_area_interpolate
+
+result = masked_area_interpolate(
+    raster="raster_file_name.tif",
+    source_df,
+    target_df,
+    pixel_values = [21,22,23,24],
+    extensive_variables=["population"],
+    intensive_variables=["income"]
+)
+```
+
+This approach assumes the user have a raster data of his own that can be read by rasterio, where a common example is the ones available at the National Land Cover Database^[https://www.mrlc.gov/national-land-cover-database-nlcd-2016]. In this example, `tobler` allows a flexible approach where the user can pass which pixels are to be assumed inhabited through `pixel_values`.
+
 
 # Relationship to existing software
 
