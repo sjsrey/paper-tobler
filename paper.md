@@ -53,7 +53,7 @@ https://joss.readthedocs.io/en/latest/paper.html#:~:text=Your%20paper%20must-,in
 -->
 
 
-[@mennis2006IntelligentDasymetric;@molinski2022PyinterpolateSpatial;@goodchild1980areal;@Eicher2001dasy]
+[@mennis2006IntelligentDasymetric;@molinski2022PyinterpolateSpatial;@goodchild1980areal;@Eicher2001dasy;@Reibel2007]
 
 # Summary
 
@@ -62,7 +62,7 @@ https://joss.readthedocs.io/en/latest/paper.html#:~:text=Your%20paper%20must-,in
 
 Areal interpolation is a foundational problem in spatial analysis, arising whenever data collected over one set of polygons (source zones) must be reallocated to another (target zones) with different spatial configurations. `tobler` implements a suite of methods for this task, ranging from simple area-weighted interpolation to more advanced dasymetric and model-based approaches. The package is designed to operate natively on GeoPandas GeoDataFrames, enabling seamless integration into modern Python-based geospatial workflows.
 
-As part of the PySAL (Python Spatial Analysis Library [@pysal2007;rey2022pysalecosystem]) ecosystem, `tobler` adheres to shared design principles emphasizing composability, transparency, and reproducibility. It fills a critical gap in the Python geospatial stack by providing robust, well-tested implementations of areal interpolation methods that are both accessible for applied users and extensible for methodological research.
+As part of the PySAL (Python Spatial Analysis Library [@pysal2007;@rey2022pysalecosystem]) ecosystem, `tobler` adheres to shared design principles emphasizing composability, transparency, and reproducibility. It fills a critical gap in the Python geospatial stack by providing robust, well-tested implementations of areal interpolation methods that are both accessible for applied users and extensible for methodological research.
 
 # Statement of need
 
@@ -81,23 +81,51 @@ In the Python ecosystem, prior to `tobler`, support for areal interpolation was 
 
 These capabilities make `tobler` particularly valuable for researchers and practitioners in fields such as geography, urban planning, public health, environmental science, and regional economics, where spatial data integration is a routine requirement.
 
-# Core functionality
+# State of the field
+
+`tobler` is a component of the PySAL ecosystem, which provides a comprehensive suite of tools for spatial analysis in Python. Within this ecosystem:
+
+* `libpysal` provides spatial weights, data structures, and foundational utilities
+* `esda` supports exploratory spatial data analysis
+* `spreg` implements spatial econometric models
+* `mapclassify` provides classification schemes for choropleth mapping
+
+`tobler` complements these packages by addressing the specific problem of spatial data transformation between incompatible zonal systems.
+
+Compared to desktop GIS platforms, `tobler` offers several advantages:
+
+* **Reproducibility**: Workflows can be scripted and version-controlled
+* **Transparency**: Methods and assumptions are explicit and inspectable
+* **Extensibility**: Users can modify or extend algorithms for research purposes
+* **Integration**: Interpolation can be embedded within larger data science pipelines, including machine learning and statistical modeling
+
+While similar functionality exists in other ecosystems (e.g., R packages such as `areal` or `sf`-based workflows), `tobler` provides a native solution for Python users, aligning with the growing adoption of Python in geospatial and data science communities.
+
+# Software design
+
+`tobler` is designed with attention to both computational efficiency and usability. Spatial overlay operations, which are central to areal interpolation, can be computationally intensive for large datasets. The package leverages vectorized operations and efficient geometric libraries (via GeoPandas and Shapely) to handle these tasks.
+
+The API design emphasizes clarity and consistency, with function signatures that explicitly distinguish between extensive and intensive variables. This reduces the likelihood of common errors in interpolation workflows and encourages best practices in spatial data handling.
+
+Additionally, `tobler` is developed with testing and documentation standards consistent with the Scientific Python ecosystem, ensuring reliability and maintainability.
+
+## Core Functionality
 
 `tobler` organizes its functionality around several key interpolation paradigms, each corresponding to different assumptions about how variables are distributed within source zones.
 
-## Area-weighted interpolation
+### Area-weighted interpolation
 
 Area-weighted interpolation is the most basic and widely used method for transferring data between polygon layers. It assumes that variables are uniformly distributed within each source zone and allocates values to target zones in proportion to the area of overlap.
 
 `tobler` provides efficient implementations for both **extensive variables** (e.g., population counts) and **intensive variables** (e.g., rates or densities), ensuring appropriate handling of each type. The library also supports pycnophylactic adjustments to preserve totals where required.
 
-## Dasymetric interpolation
+### Dasymetric interpolation
 
 Dasymetric interpolation refines area-weighted approaches by incorporating ancillary data—such as land use, land cover, or remotely sensed information—to model the internal heterogeneity of source zones. For example, population may be redistributed only to residential areas rather than uniformly across all land.
 
 `tobler` supports both vector- and raster-based dasymetric workflows, allowing users to integrate a wide range of auxiliary datasets. This is particularly useful in urban and environmental applications where fine-scale heterogeneity is important.
 
-## Model-based interpolation
+### Model-based interpolation
 
 Beyond deterministic approaches, `tobler` includes model-based methods that use statistical or machine learning techniques to estimate spatial distributions. These approaches can incorporate covariates and capture more complex spatial patterns, providing improved accuracy in many contexts.
 
@@ -144,54 +172,17 @@ This approach assumes the user have a raster data of his own that can be read by
 
 ![Example of `tobler` usage for an extensive variable (male employment population) in Charleston, SC, comparing census tracts and ZCTAs.\label{fig:emp_male_maps}](figs/emp_male_maps.png)
 
-# Relationship to existing software
-
-`tobler` is a component of the PySAL ecosystem, which provides a comprehensive suite of tools for spatial analysis in Python. Within this ecosystem:
-
-* `libpysal` provides spatial weights, data structures, and foundational utilities
-* `esda` supports exploratory spatial data analysis
-* `spreg` implements spatial econometric models
-* `mapclassify` provides classification schemes for choropleth mapping
-
-`tobler` complements these packages by addressing the specific problem of spatial data transformation between incompatible zonal systems.
-
-Compared to desktop GIS platforms, `tobler` offers several advantages:
-
-* **Reproducibility**: Workflows can be scripted and version-controlled
-* **Transparency**: Methods and assumptions are explicit and inspectable
-* **Extensibility**: Users can modify or extend algorithms for research purposes
-* **Integration**: Interpolation can be embedded within larger data science pipelines, including machine learning and statistical modeling
-
-While similar functionality exists in other ecosystems (e.g., R packages such as `areal` or `sf`-based workflows), `tobler` provides a native solution for Python users, aligning with the growing adoption of Python in geospatial and data science communities.
-
-# Performance and design considerations
-
-`tobler` is designed with attention to both computational efficiency and usability. Spatial overlay operations, which are central to areal interpolation, can be computationally intensive for large datasets. The package leverages vectorized operations and efficient geometric libraries (via GeoPandas and Shapely) to handle these tasks.
-
-The API design emphasizes clarity and consistency, with function signatures that explicitly distinguish between extensive and intensive variables. This reduces the likelihood of common errors in interpolation workflows and encourages best practices in spatial data handling.
-
-Additionally, `tobler` is developed with testing and documentation standards consistent with the Scientific Python ecosystem, ensuring reliability and maintainability.
-
-
-# Statement of need
-
-...
-
-# State of the field
-
-...
-
-# Software design
-
-...
-
 # Research impact statement
 
-...
+> ``Evidence of realized impact (publications, external use, integrations) or credible near-term significance (benchmarks, reproducible materials, community-readiness signals). The evidence should be compelling and specific, not aspirational.''
+
+... ***need*** ...
 
 # AI usage disclosure
 
-...
+> ``Transparent disclosure of any use of generative AI in the software creation, documentation, or paper authoring. If no AI tools were used, state this explicitly. If AI tools were used, describe how they were used and how the quality and correctness of AI-generated content was verified.''
+
+No generative AI or LLMs were used for code production for `tobler`. (is this statement correct?)
 
 # Acknowledgements
 
