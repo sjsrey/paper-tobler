@@ -20,6 +20,10 @@ authors:
   orcid: "0000-0002-1889-5282"
   equal-contrib: true
   affiliation: 3
+- name: Martin Fleischmann
+  orcid: "0000-0003-3319-3366"
+  equal-contrib: true
+  affiliation: 4
 bibliography: paper.bib
 affiliations:
 - name: University of California, Irvine
@@ -28,6 +32,8 @@ affiliations:
   index: 2
 - name: Federal University of Rio Grande do Sul
   index: 3
+- name: Charles University, Faculty of Science
+  index: 4
 ---
 
 <!--
