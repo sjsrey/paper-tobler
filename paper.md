@@ -18,7 +18,7 @@ authors:
   affiliation: 2
 - name: Renan X. Cortes
   orcid: "0000-0002-1889-5282"
-  equal-contrib: true
+  equal-contrib: false
   affiliation: 3
 bibliography: paper.bib
 affiliations:
@@ -166,7 +166,7 @@ result = masked_area_interpolate(
 )
 ```
 
-This approach assumes the user have a raster data of his own that can be read by rasterio^[A common example is the ones available at the [National Land Cover Database](https://www.mrlc.gov/national-land-cover-database-nlcd-2016)]. In this example, `tobler` allows a flexible approach where the user can pass which pixels are to be assumed inhabited through `pixel_values` resulting in a more realistic spatial distribution. Similarly, the user can execute a model-based approach using the `tobler.model.glm` function.
+This approach assumes the user have a raster data of his own that can be read by rasterio^[A common example is the ones available at the [National Land Cover Database](https://www.mrlc.gov/national-land-cover-database-nlcd-2016).]. In this example, `tobler` allows a flexible approach where the user can pass which pixels are to be assumed inhabited through `pixel_values` resulting in a more realistic spatial distribution. Similarly, the user can execute a model-based approach using the `tobler.model.glm` function.
 
 \autoref{fig:emp_male_maps} illustrates an example comparing interpolated values derived from different spatial configurations, highlighting how results may vary depending on the underlying geometry and interpolation approach.
 
