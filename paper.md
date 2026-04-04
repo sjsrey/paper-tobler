@@ -53,8 +53,6 @@ https://joss.readthedocs.io/en/latest/paper.html#:~:text=Your%20paper%20must-,in
 -->
 
 
-[@mennis2006IntelligentDasymetric;@molinski2022PyinterpolateSpatial;@goodchild1980areal;@Eicher2001dasy;@Reibel2007]
-
 # Summary
 
 
@@ -62,11 +60,11 @@ https://joss.readthedocs.io/en/latest/paper.html#:~:text=Your%20paper%20must-,in
 
 Areal interpolation is a foundational problem in spatial analysis, arising whenever data collected over one set of polygons (source zones) must be reallocated to another (target zones) with different spatial configurations. `tobler` implements a suite of methods for this task, ranging from simple area-weighted interpolation to more advanced dasymetric and model-based approaches. The package is designed to operate natively on GeoPandas GeoDataFrames, enabling seamless integration into modern Python-based geospatial workflows.
 
-As part of the PySAL (Python Spatial Analysis Library [@pysal2007;@rey2022pysalecosystem]) ecosystem, `tobler` adheres to shared design principles emphasizing composability, transparency, and reproducibility. It fills a critical gap in the Python geospatial stack by providing robust, well-tested implementations of areal interpolation methods that are both accessible for applied users and extensible for methodological research.
+As part of the Python Spatial Analysis Library (PySAL) ecosystem [@pysal2007;@rey2022pysalecosystem], `tobler` adheres to shared design principles emphasizing composability, transparency, and reproducibility. It fills a critical gap in the Python geospatial stack by providing robust, well-tested implementations of areal interpolation methods that are both accessible for applied users and extensible for methodological research.
 
 # Statement of need
 
-Spatial data are frequently aggregated to arbitrary or administratively defined units, such as census tracts, ZIP codes, or political boundaries. These units often change over time or differ across datasets, creating substantial challenges for longitudinal analysis, data integration, and cross-scale comparison. Analysts are therefore routinely required to transfer variables from one set of spatial units to another, a process complicated by partial overlaps, mismatched boundaries, and differences in spatial resolution.
+Spatial data are frequently aggregated to arbitrary or administratively defined units, such as census tracts, ZIP codes, or political boundaries. These units often change over time or differ across datasets, creating substantial challenges for longitudinal analysis, data integration, and cross-scale comparison. Analysts are therefore routinely required to transfer variables from one set of spatial units to another, a process complicated by partial overlaps, mismatched boundaries, and differences in spatial resolution. This problem is especially frequent in the social and behavioral sciences, where data sources like surveys (e.g. the Census) are published as aggregate statistics within a set of geographically-referenced polygons. While there are methods and Python packages for conducting *continuous* spatial interpolation, commonly applied in the Earth sciences and physical Geography--including examples like `PyKrige` [@benjamin_murphy_2025_17372225] or `pyinterpolate` [@molinski2022PyinterpolateSpatial]--such methods are inappropriate for interpolating data between discrete zoning systems.
 
 Traditional GIS software (e.g., ArcGIS, QGIS) provides tools for areal interpolation, but these implementations are often embedded in graphical interfaces, limiting reproducibility and automation. Moreover, they may not expose the full range of methodological options or allow for easy integration into data science pipelines.
 
@@ -117,17 +115,17 @@ Additionally, `tobler` is developed with testing and documentation standards con
 
 Area-weighted interpolation is the most basic and widely used method for transferring data between polygon layers. It assumes that variables are uniformly distributed within each source zone and allocates values to target zones in proportion to the area of overlap.
 
-`tobler` provides efficient implementations for both **extensive variables** (e.g., population counts) and **intensive variables** (e.g., rates or densities), ensuring appropriate handling of each type. The library also supports pycnophylactic adjustments to preserve totals where required.
+`tobler` provides efficient implementations for both **extensive variables** (e.g., population counts) and **intensive variables** (e.g., rates or densities), ensuring appropriate handling of each type [@goodchild1980areal]. The library also supports pycnophylactic adjustments to preserve totals where required [@tobler1979SmoothPycnophylactic].
 
 ### Dasymetric interpolation
 
-Dasymetric interpolation refines area-weighted approaches by incorporating ancillary data—such as land use, land cover, or remotely sensed information—to model the internal heterogeneity of source zones. For example, population may be redistributed only to residential areas rather than uniformly across all land.
+Dasymetric interpolation refines area-weighted approaches by incorporating ancillary data—such as land use, land cover, or remotely sensed information—to model the internal heterogeneity of source zones. For example, population may be redistributed only to residential areas rather than uniformly across all land [@mennis2006IntelligentDasymetric; @Eicher2001dasy; @Reibel2007].
 
 `tobler` supports both vector- and raster-based dasymetric workflows, allowing users to integrate a wide range of auxiliary datasets. This is particularly useful in urban and environmental applications where fine-scale heterogeneity is important.
 
 ### Model-based interpolation
 
-Beyond deterministic approaches, `tobler` includes model-based methods that use statistical or machine learning techniques to estimate spatial distributions. These approaches can incorporate covariates and capture more complex spatial patterns, providing improved accuracy in many contexts.
+Beyond deterministic approaches, `tobler` includes model-based methods that use statistical or machine learning techniques to estimate spatial distributions. These approaches can incorporate covariates and capture more complex spatial patterns, providing improved accuracy in many contexts [@flowerdew1992DevelopmentsAreal; @flowerdewMethodFittingGravity1982].
 
 The design of `tobler` allows these methods to be extended and customized, making the package a useful platform for methodological research in spatial interpolation.
 
@@ -176,13 +174,17 @@ This approach assumes the user have a raster data of his own that can be read by
 
 > ``Evidence of realized impact (publications, external use, integrations) or credible near-term significance (benchmarks, reproducible materials, community-readiness signals). The evidence should be compelling and specific, not aspirational.''
 
-... ***need*** ...
+The `tobler` package has made tangible contributions to spatial science, pedagogy, and applications in government and industry. In academia, the package is used as part of a data-processing pipeline for research that examines the spatial-contextual influence on varierty of outcomes including segregation [@wei2022ReducingRacial], housing policy [@rey2022LegacyRedlining], education policy [@rey2024MeasuringSpatial; @osia2025InfrastructureEnvironmental], and pollution exposure [@lee2026QuantifyingMean; @laporta2024UrbanScaling]. It is also used in environmental science [@hu2023MethodologicalChallenges] and regioanalization research [@feng2022MaxpcompactregionsProblem].
+
+In spatial data science education, `tobler` has become an integral part of many many curricula. It is included in popular pedagogical resources including two textbooks [@reyGeographicDataScience2023; @knaapUrbanAnalysis2026], and is taught in graduate and undergraduate courses in univresities across the globe, including the University of California (Berkeley, Irvine, and Riverside campuses), San Diego State University, Charles University, University of Liverpool, Bristol University, and the University of Chicago.
+
+**I took some liberty with a couple of these...we might want to check with Luc and Levi**
+
+In the public sector, the `tobler` package is used as part of a processing pipeline that powers urban planning and policymaking, including two highly visible projects from the Turing Institute, [DemoLand](https://www.turing.ac.uk/research/research-projects/demoland) and [UrbanGrammar](https://www.turing.ac.uk/research/research-projects/urban-grammar). **Martin/Dani could you confirm and add a sentence or two?**?
 
 # AI usage disclosure
 
-> ``Transparent disclosure of any use of generative AI in the software creation, documentation, or paper authoring. If no AI tools were used, state this explicitly. If AI tools were used, describe how they were used and how the quality and correctness of AI-generated content was verified.''
-
-No generative AI or LLMs were used for code production for `tobler`. (is this statement correct?)
+No generative AI or LLMs were used for code production for `tobler` or the writing of this paper.
 
 # Acknowledgements
 
@@ -193,4 +195,3 @@ The following acknowledgement applies to James D. Gaboardi:
 > This manuscript has been authored in part by UT-Battelle LLC under contract DE-AC05-00OR22725 with the US Department of Energy (DOE). The US government retains and the publisher, by accepting the article for publication, acknowledges that the US government retains a nonexclusive, paid-up, irrevocable worldwide license to publish or reproduce the published form of this manuscript, or allow others to do so, for US government purposes. DOE will provide public access to these results of federally sponsored research in accordance with the DOE Public Access Plan (http://energy.gov/downloads/doe-public-access-plan).
 
 # References
-
