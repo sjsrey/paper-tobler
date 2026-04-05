@@ -20,6 +20,10 @@ authors:
   orcid: "0000-0002-1889-5282"
   equal-contrib: true
   affiliation: 3
+- name: Martin Fleischmann
+  orcid: "0000-0003-3319-3366"
+  equal-contrib: true
+  affiliation: 4
 bibliography: paper.bib
 affiliations:
 - name: University of California, Irvine
@@ -28,6 +32,8 @@ affiliations:
   index: 2
 - name: Federal University of Rio Grande do Sul
   index: 3
+- name: Charles University, Faculty of Science
+  index: 4
 ---
 
 <!--
@@ -148,7 +154,7 @@ result = area_interpolate(
 )
 ```
 
-This operation transfers population counts and income measures from the source geometries to the target geometries, handling each variable type (extensive/intensive) appropriately. 
+This operation transfers population counts and income measures from the source geometries to the target geometries, handling each variable type (extensive/intensive) appropriately.
 
 When additional information about within-zone heterogeneity is available, dasymetric interpolation can be used to refine estimates. For example, population counts may be redistributed using a land cover raster to exclude uninhabited areas:
 
@@ -174,6 +180,9 @@ This approach assumes the user have a raster data of his own that can be read by
 
 > ``Evidence of realized impact (publications, external use, integrations) or credible near-term significance (benchmarks, reproducible materials, community-readiness signals). The evidence should be compelling and specific, not aspirational.''
 
+The package is actively used by the research community to transfer the data between various types of geographic boundaries. This is not limited to specific applications but covers use cases from continental analysis of emissions and health [@laporta2024Urban], analysis of urban form and function [@fleischmann2022Geographical], redistribution of census data to school districts for assessment of the Clean School Bus Rebate Program [@osia2025Infrastructure], quantification of radon exposure [@lee2026Quantifyinga], or harmonization of vector and raster data for computer vision tasks [@fleischmann2024Decoding].
+
+Moreover, the package is relied on in downstream software as `atlasbr` for harmonization of Brazilian urban data [@oliveira_paiva_neto_atlasbr], and is referred to in the `pygridmap` package by Eurostat [@grazzini_gaffuri_pygridmap] as a reference implementation.
 The `tobler` package has made tangible contributions to spatial science, pedagogy, and applications in government and industry. In academia, the package is used as part of a data-processing pipeline for research that examines the spatial-contextual influence on a variety of outcomes, including segregation [@wei2022ReducingRacial], housing policy [@rey2022LegacyRedlining], education policy [@rey2024MeasuringSpatial; @osia2025InfrastructureEnvironmental], and pollution exposure [@lee2026QuantifyingMean; @laporta2024UrbanScaling]. It is also used in environmental science [@hu2023MethodologicalChallenges] and regionalization research [@feng2022MaxpcompactregionsProblem].
 
 In spatial data science education, `tobler` has become an integral part of many many curricula. It is included in popular pedagogical resources including two textbooks [@reyGeographicDataScience2023; @knaapUrbanAnalysis2026], and is taught in graduate and undergraduate courses in univresities across the globe, including the University of California (Berkeley, Irvine, and Riverside campuses), San Diego State University, Charles University, University of Liverpool, Bristol University, the University of Chicago, Northern Arizona University, and Temple University.
